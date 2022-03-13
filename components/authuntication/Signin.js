@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { useState } from "react";
 import {
   VStack,
   Heading,
@@ -11,7 +11,19 @@ import {
   HStack,
   Button,
 } from "native-base";
-const Signin = () => {
+import authStore from "../../stores/authStore";
+
+const Signin = ({ navigation }) => {
+  const [user, setUser] = useState({
+    username: "username",
+    password: "password",
+  });
+
+  const handleSubmit = () => {
+    authStore.signin(user);
+    navigation.replace("Explore");
+  };
+
   return (
     <Center w="100%">
       <Box safeArea p="2" py="8" w="90%" maxW="290">
@@ -20,22 +32,22 @@ const Signin = () => {
           <FormControl>
             <Input
               placeholder="username"
-              //   onChangeText={(value) => setUser({ ...user, username: value })}
+              onChangeText={(value) => setUser({ ...user, username: value })}
             />
           </FormControl>
           <FormControl>
             <Input
               placeholder="password"
               type="password"
-              //   onChangeText={(value) => setUser({ ...user, password: value })}
+              onChangeText={(value) => setUser({ ...user, password: value })}
             />
           </FormControl>
-          <Button mt="2" colorScheme="indigo">
-            Sign in
+          <Button mt="2" onPress={handleSubmit}>
+            Submit
           </Button>
           <HStack mt="5" justifyContent="center">
             <Text>I'm a new user. </Text>
-            <Link href="#">Sign Up</Link>
+            <Link onPress={() => navigation.navigate("Signup")}>Sign Up</Link>
           </HStack>
         </VStack>
       </Box>

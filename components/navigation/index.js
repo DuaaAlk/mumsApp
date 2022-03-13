@@ -3,14 +3,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Signup from "../authuntication/Signup";
 import Signin from "../authuntication/Signin";
-import Explore from "../authuntication/Explore";
+import Explore from "../post/Explore";
 
 const Stack = createStackNavigator();
 
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Signin">
+      <Stack.Navigator initialRouteName="Explore">
         <Stack.Screen name="Explore" component={Explore} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Signin" component={Signin} />

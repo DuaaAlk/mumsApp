@@ -27,7 +27,7 @@ class AuthStore {
       const response = await instance.post("/user/signin", user);
       const { token } = response.data;
       this.setUser(token);
-      console.log("Line 28 signin: authStore: token = " + token);
+      // console.log("Line 28 signin: authStore: token = " + token);
     } catch (error) {
       console.error("Line 30 signin: authStore: " + error);
     }

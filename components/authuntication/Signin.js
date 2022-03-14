@@ -21,7 +21,7 @@ const Signin = ({ navigation }) => {
 
   const handleSubmit = () => {
     authStore.signin(user);
-    navigation.replace("Explore");
+    navigation.navigate("mainNav");
   };
 
   return (

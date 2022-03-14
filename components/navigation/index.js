@@ -3,15 +3,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Signup from "../authuntication/Signup";
 import Signin from "../authuntication/Signin";
-import Explore from "../post/Explore";
+import TabNavigator from "./TabNavigator";
 
 const Stack = createStackNavigator();
 
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Explore">
-        <Stack.Screen name="Explore" component={Explore} />
+      <Stack.Navigator initialRouteName="Signin">
+        <Stack.Screen
+          name="mainNav"
+          component={TabNavigator}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Signin" component={Signin} />
       </Stack.Navigator>

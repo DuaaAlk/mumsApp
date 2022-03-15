@@ -1,17 +1,18 @@
 import { StyleSheet, Text } from "react-native";
 import {
   HStack,
-  VStack,
   Box,
   Image,
   AspectRatio,
-  Center,
   Stack,
   Heading,
   Avatar,
 } from "native-base";
+import authStore from "../../stores/authStore";
 
 const PostItem = ({ post }) => {
+  const user = authStore.user;
+
   return (
     <>
       <Box alignItems="center" width="100%">
@@ -44,10 +45,14 @@ const PostItem = ({ post }) => {
           </Box>
           <Stack p="4">
             <Stack space={2}>
-              <HStack space={5} style={styles.productItemWrapper}>
+              <HStack space={5} style={styles.postItemWrapper}>
                 <Avatar
-                  style={styles.productItemImage}
-                  // source={{ uri: baseURL + product.image }}
+                  style={styles.postItemImage}
+                  // source={{
+                  //   uri: user.image
+                  //     ? baseURL + user.image
+                  //     : "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg",
+                  // }}
                 />
                 <Heading size="md" ml="-1">
                   {post.title}
@@ -77,10 +82,10 @@ const PostItem = ({ post }) => {
 export default PostItem;
 
 const styles = StyleSheet.create({
-  productItemWrapper: {
+  postItemWrapper: {
     alignItems: "center",
   },
-  productItemImage: {
+  postItemImage: {
     height: 50,
     width: 50,
   },

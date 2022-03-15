@@ -15,6 +15,15 @@ class PostStore {
       console.log("Line 15: postStore -> fetchPosts -> error", error);
     }
   };
+
+  createPost = async (post) => {
+    try {
+      await instance.post("/user/posts", post);
+      console.log("Post is created, response.data => ");
+    } catch (error) {
+      console.log("Line 23: postStore -> createPost -> error", error);
+    }
+  };
 }
 
 const postsStore = new PostStore();

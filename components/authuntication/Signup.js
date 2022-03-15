@@ -16,13 +16,14 @@ const Signup = ({ navigation }) => {
     username: "username",
     password: "password",
     email: "",
+    image: "",
     firstName: "",
     lastName: "",
   });
 
   const handleSubmit = () => {
     authStore.signup(user);
-    navigation.replace("Explore");
+    navigation.replace("mainNav");
   };
 
   return (

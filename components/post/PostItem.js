@@ -47,10 +47,10 @@ const PostItem = ({ post }) => {
             <Stack space={2}>
               <HStack space={5} style={styles.postItemWrapper}>
                 <Avatar
-                  style={styles.postItemImage}
+                  size="lg"
                   // source={{
-                  //   uri: user.image
-                  //     ? baseURL + user.image
+                  //   uri: authStore.user.image
+                  //     ? baseURL + authStore.user.image
                   //     : "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg",
                   // }}
                 />

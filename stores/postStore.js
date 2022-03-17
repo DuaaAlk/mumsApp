@@ -16,10 +16,11 @@ class PostStore {
     }
   };
 
-  createPost = async (post) => {
+  createPost = async (post, navigation) => {
     try {
-      await instance.post("/user/posts", post);
-      console.log("Post is created, response.data => ");
+      const response = await instance.post("/user/posts", post);
+      this.posts.push(response.data.payload);
+      navigation.navigate("Explore");
     } catch (error) {
       console.log("Line 23: postStore -> createPost -> error", error);
     }

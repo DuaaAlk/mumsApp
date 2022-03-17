@@ -10,18 +10,21 @@ import {
   Link,
   HStack,
   Button,
+  Icon,
 } from "native-base";
 import authStore from "../../stores/authStore";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Signin = ({ navigation }) => {
+  const [show, setShow] = useState(false);
   const [user, setUser] = useState({
-    username: "username",
-    password: "password",
+    username: "",
+    password: "",
   });
 
   const handleSubmit = () => {
-    authStore.signin(user);
-    navigation.navigate("mainNav");
+    authStore.signin(user, navigation);
   };
 
   return (
@@ -33,6 +36,14 @@ const Signin = ({ navigation }) => {
             <Input
               placeholder="username"
               onChangeText={(value) => setUser({ ...user, username: value })}
+              InputLeftElement={
+                <Icon
+                  as={<Ionicons name="person" size={24} color="black" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                />
+              }
             />
           </FormControl>
           <FormControl>
@@ -40,6 +51,20 @@ const Signin = ({ navigation }) => {
               placeholder="password"
               type="password"
               onChangeText={(value) => setUser({ ...user, password: value })}
+              type={show ? "text" : "password"}
+              InputLeftElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
             />
           </FormControl>
           <Button mt="2" onPress={handleSubmit}>

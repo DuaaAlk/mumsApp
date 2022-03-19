@@ -1,9 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-import CreatePost from "../post/CreatePost";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import Explore from "../post/Explore";
+import UserProfile from "../authuntication/UserProfile";
+import CreatePost from "../post/CreatePost";
+import Search from "../post/Search";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,11 +35,21 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Search"
-        component={CreatePost}
+        component={Search}
         options={{
           // tabBarLabel: "",
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="search1" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={UserProfile}
+        options={{
+          // tabBarLabel: "",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" size={size} color={color} />
           ),
         }}
       />

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { useState } from "react";
 import {
   VStack,
@@ -8,22 +8,23 @@ import {
   FormControl,
   Input,
   Button,
+  TextArea,
 } from "native-base";
 import authStore from "../../stores/authStore";
 
 const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
-    username: "username",
-    password: "password",
+    username: "",
+    password: "",
     email: "",
     image: "",
     firstName: "",
     lastName: "",
+    bio: "",
   });
 
   const handleSubmit = () => {
-    authStore.signup(user);
-    navigation.replace("mainNav");
+    authStore.signup(user, navigation);
   };
 
   return (
@@ -34,33 +35,39 @@ const Signup = ({ navigation }) => {
           <FormControl>
             <Input
               placeholder="Username"
-              onChangeText={(value) => setUser({ ...user, username: value })}
+              onChangeText={(username) => setUser({ ...user, username })}
             />
           </FormControl>
           <FormControl>
             <Input
               placeholder="Password"
               type="password"
-              onChangeText={(value) => setUser({ ...user, password: value })}
+              onChangeText={(password) => setUser({ ...user, password })}
             />
           </FormControl>
           <FormControl>
             <Input
               placeholder="Email"
               type="email"
-              onChangeText={(value) => setUser({ ...user, email: value })}
+              onChangeText={(email) => setUser({ ...user, email })}
             />
           </FormControl>
           <FormControl>
             <Input
               placeholder="First Name"
-              onChangeText={(value) => setUser({ ...user, firstName: value })}
+              onChangeText={(firstName) => setUser({ ...user, firstName })}
             />
           </FormControl>
           <FormControl>
             <Input
               placeholder="Last Name"
-              onChangeText={(value) => setUser({ ...user, lastName: value })}
+              onChangeText={(lastName) => setUser({ ...user, lastName })}
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              onChangeText={(bio) => setUser({ ...user, bio })}
+              placeholder="Bio"
             />
           </FormControl>
           <Button mt="2" onPress={handleSubmit}>
@@ -74,4 +81,6 @@ const Signup = ({ navigation }) => {
 
 export default Signup;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  inputs: {},
+});

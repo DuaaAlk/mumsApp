@@ -11,33 +11,32 @@ class AuthStore {
     // this will turn our class into a mobx store and all components can observe the changes that happen in the store
   }
 
-  signup = async (user) => {
+  signup = async (user, navigation) => {
     try {
       const response = await instance.post("/user/signup", user);
       const { token } = response.data;
-      this.setUser(token);
-      console.log("Line 19 signup: authStore: token = " + token);
+      this.setUser(token, navigation);
     } catch (error) {
-      console.log(error);
+      console.log("Line 20 signup: authStore: " + error);
     }
   };
 
-  signin = async (user) => {
+  signin = async (user, navigation) => {
     try {
       const response = await instance.post("/user/signin", user);
       const { token } = response.data;
-      this.setUser(token);
-      // console.log("Line 28 signin: authStore: token = " + token);
+      this.setUser(token, navigation);
     } catch (error) {
       console.error("Line 30 signin: authStore: " + error);
     }
   };
 
-  setUser = async (token) => {
+  setUser = async (token, navigation) => {
     try {
       await AsyncStorage.setItem("token", token);
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       this.user = decode(token);
+      navigation.navigate("mainNav");
     } catch (error) {
       console.error(error);
     }

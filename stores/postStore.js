@@ -16,10 +16,14 @@ class PostStore {
     }
   };
 
-  createPost = async (post, navigation) => {
+  createPost = async (post, navigation, toast) => {
     try {
       const response = await instance.post("/user/posts", post);
       this.posts.push(response.data.payload);
+      toast.show({
+        title: "👍🏻",
+        placement: "bottom",
+      });
       navigation.navigate("Explore");
     } catch (error) {
       console.log("Line 23: postStore -> createPost -> error", error);

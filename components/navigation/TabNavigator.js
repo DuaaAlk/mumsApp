@@ -7,6 +7,7 @@ import Explore from "../post/Explore";
 import UserProfile from "../authuntication/UserProfile";
 import CreatePost from "../post/CreatePost";
 import Search from "../post/Search";
+import DTPicker from "../DTPicker";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +36,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={DTPicker}
         options={{
           // tabBarLabel: "",
           tabBarIcon: ({ color, size }) => (

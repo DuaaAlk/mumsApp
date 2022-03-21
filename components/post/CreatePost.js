@@ -28,11 +28,7 @@ const CreatePost = ({ navigation }) => {
 
   const handleSubmit = () => {
     console.log(post);
-    postsStore.createPost(post, navigation);
-    toast.show({
-      title: "👍🏻",
-      placement: "bottom",
-    });
+    postsStore.createPost(post, navigation, toast);
     setPost({
       title: "",
       description: "",

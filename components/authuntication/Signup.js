@@ -8,7 +8,6 @@ import {
   FormControl,
   Input,
   Button,
-  TextArea,
 } from "native-base";
 import authStore from "../../stores/authStore";
 

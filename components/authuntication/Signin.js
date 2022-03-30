@@ -28,7 +28,7 @@ const Signin = ({ navigation }) => {
   };
 
   return (
-    <Center w="100%">
+    <Center w="100%" style={styles.container}>
       <Box safeArea p="2" py="8" w="90%" maxW="290">
         <Heading>Signin</Heading>
         <VStack space={3} mt="5">
@@ -36,6 +36,7 @@ const Signin = ({ navigation }) => {
             <Input
               placeholder="username"
               onChangeText={(value) => setUser({ ...user, username: value })}
+              autoCapitalize="none"
               InputLeftElement={
                 <Icon
                   as={<Ionicons name="person" size={24} color="black" />}
@@ -71,7 +72,7 @@ const Signin = ({ navigation }) => {
             Submit
           </Button>
           <HStack mt="5" justifyContent="center">
-            <Text>I'm a new user. </Text>
+            <Text mt="5">I'm a new user. </Text>
             <Link onPress={() => navigation.navigate("Signup")}>Sign Up</Link>
           </HStack>
         </VStack>
@@ -82,4 +83,8 @@ const Signin = ({ navigation }) => {
 
 export default Signin;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 100,
+  },
+});

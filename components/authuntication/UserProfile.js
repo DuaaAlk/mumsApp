@@ -1,14 +1,10 @@
 import { StyleSheet, Text } from "react-native";
-import { Avatar, HStack, VStack, Heading, Button } from "native-base";
+import { Avatar, HStack, VStack, Heading, Button, View } from "native-base";
 import authStore from "../../stores/authStore";
 import { useState } from "react";
 import AppointmentSlotModal from "../modal/AppointmentSlotModal";
 
 const UserProfile = () => {
-  const [showModal, setShowModal] = useState(false);
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
-
   return (
     <VStack space={5} style={styles.userProfileWrapper}>
       <HStack space={3}>
@@ -28,11 +24,11 @@ const UserProfile = () => {
         </VStack>
       </HStack>
       <Text style={styles.userBio}>Bio: {authStore.user.bio}</Text>
-      <HStack space={3} justifyContent="center">
+      {/* <HStack space={3} justifyContent="center">
         <Button onPress={handleShow}>+ Appointment Slot</Button>
         <AppointmentSlotModal showModal={showModal} handleClose={handleClose} />
         <Button>Appointments</Button>
-      </HStack>
+      </HStack> */}
     </VStack>
   );
 };
@@ -43,6 +39,7 @@ const styles = StyleSheet.create({
   userProfileWrapper: {
     padding: 30,
     backgroundColor: "white",
+    //height: 500,
   },
   userNameWrapper: {
     paddingTop: 30,

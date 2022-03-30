@@ -32,7 +32,6 @@ const AppointmentSlotModal = ({ showModal, handleClose }) => {
   };
 
   const handleSave = (event) => {
-    //console.log(slot);
     appointmentSlotStore.createAppointmentSlot(slot, toast);
     handleClose();
   };

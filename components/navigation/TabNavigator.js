@@ -8,6 +8,7 @@ import UserProfile from "../authuntication/UserProfile";
 import CreatePost from "../post/CreatePost";
 import Search from "../post/Search";
 import DTPicker from "../DTPicker";
+import TabTopNavigator from "./TabTopNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +37,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Search"
-        component={DTPicker}
+        component={Search}
         options={{
           // tabBarLabel: "",
           tabBarIcon: ({ color, size }) => (
@@ -46,9 +47,10 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={UserProfile}
+        component={TabTopNavigator}
         options={{
           // tabBarLabel: "",
+          //headerTitle: () => <UserProfile />,
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" size={size} color={color} />
           ),

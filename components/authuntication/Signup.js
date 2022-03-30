@@ -27,7 +27,7 @@ const Signup = ({ navigation }) => {
   };
 
   return (
-    <Center w="100%">
+    <Center w="100%" style={styles.container}>
       <Box safeArea p="2" py="8" w="90%" maxW="290">
         <Heading>Signup</Heading>
         <VStack space={3} mt="5">
@@ -81,5 +81,7 @@ const Signup = ({ navigation }) => {
 export default Signup;
 
 const styles = StyleSheet.create({
-  inputs: {},
+  container: {
+    marginTop: 100,
+  },
 });

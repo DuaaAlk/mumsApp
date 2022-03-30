@@ -19,7 +19,8 @@ class PostStore {
   createPost = async (post, navigation, toast) => {
     try {
       const response = await instance.post("/user/posts", post);
-      this.posts.push(response.data.payload);
+      //this.posts.push(response.data.payload);
+      this.posts = [response.data.payload, ...this.posts];
       toast.show({
         title: "👍🏻",
         placement: "bottom",

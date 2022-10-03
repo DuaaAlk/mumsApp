@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextInput, Text } from "react-native";
 import { useState } from "react";
 import {
   VStack,
@@ -6,8 +6,9 @@ import {
   Box,
   Center,
   FormControl,
-  Input,
+  HStack,
   Button,
+  Link,
 } from "native-base";
 import authStore from "../../stores/authStore";
 
@@ -32,47 +33,63 @@ const Signup = ({ navigation }) => {
         <Heading>Signup</Heading>
         <VStack space={3} mt="5">
           <FormControl>
-            <Input
+            <TextInput
+              style={styles.inputContainer}
               placeholder="Username"
+              autoCapitalize="none"
               onChangeText={(username) => setUser({ ...user, username })}
             />
           </FormControl>
           <FormControl>
-            <Input
+            <TextInput
+              style={styles.inputContainer}
               placeholder="Password"
-              type="password"
+              secureTextEntry={true}
+              autoCapitalize="none"
               onChangeText={(password) => setUser({ ...user, password })}
             />
           </FormControl>
           <FormControl>
-            <Input
+            <TextInput
+              style={styles.inputContainer}
               placeholder="Email"
               type="email"
+              autoCapitalize="none"
               onChangeText={(email) => setUser({ ...user, email })}
             />
           </FormControl>
           <FormControl>
-            <Input
+            <TextInput
+              style={styles.inputContainer}
               placeholder="First Name"
+              autoCapitalize="none"
               onChangeText={(firstName) => setUser({ ...user, firstName })}
             />
           </FormControl>
           <FormControl>
-            <Input
+            <TextInput
+              style={styles.inputContainer}
               placeholder="Last Name"
+              autoCapitalize="none"
               onChangeText={(lastName) => setUser({ ...user, lastName })}
             />
           </FormControl>
           <FormControl>
-            <Input
+            <TextInput
+              style={styles.inputContainer}
               onChangeText={(bio) => setUser({ ...user, bio })}
               placeholder="Bio"
+              autoCapitalize="none"
             />
           </FormControl>
           <Button mt="2" onPress={handleSubmit}>
             Sign up
           </Button>
         </VStack>
+        <HStack mt="5" justifyContent="center">
+          <Text mt="5">I'm an existing user. </Text>
+          <Link onPress={() => navigation.navigate("Signin")}>Sign In</Link>
+        </HStack>
       </Box>
     </Center>
   );
@@ -83,5 +100,12 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     marginTop: 100,
+  },
+  inputContainer: {
+    borderRadius: 3,
+    borderWidth: 0.4,
+    height: 30,
+    borderColor: "#D3D3D3",
+    padding: 5,
   },
 });
